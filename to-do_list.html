@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+   
+   
+   
+<style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #6dd5fa, #2980b9);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    .todo {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+
+    .todo input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border 0.3s ease;
+    }
+
+    .todo input[type="text"]:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+
+    .btn {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+    }
+
+    #tasklist {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    #tasklist li {
+      background-color: #ecf0f1;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+  </style>
+ </style>
+
+    <script>
+let array = []
+
+function toDO(){
+  let task = document.querySelector(".add-input")
+  let prior = document.querySelector(".prior")
+  let comp = document.querySelector(".com")
+  if(task.value ==""|| prior.value==""|| comp.value==""){
+    alert ("please add task")
+    return;
+  }
+ array.push({
+  title:task.value,
+  priority:prior.value,
+complete :comp.value
+});
+render()
+task.value=""
+prior.value =""
+comp.value=""
+
+}
+function render(){
+let strList = ""
+for( let i=0; i<array.length; i++){
+  strList+= `<li> ${array[i].title}- ${array[i].priority}- ${array[i].complete} <button class ="btn-1" onclick="remove(${i})">delete </button></li> `
+    
+}
+const tasklist= document.getElementById("tasklist")
+tasklist.innerHTML=strList
+}
+
+function remove(index){
+  array.splice(index,1)
+ render()
+}
+
+    </script>
+</head>
+<body>
+    <div class="todo">
+    <input type="text" placeholder="enter a Task" class="add-input">
+    <br>
+    <input type="text" placeholder="enter priority" class="prior">
+    <br>
+     <input type="text" placeholder="completed" class="com">
+    <br>
+    <button class="btn" onclick="toDO()">Add Task</button>
+    <ul id="tasklist">
+        <!-- <li></li> -->
+    </ul>
+  
+</div>
+
+</body>
+</html>

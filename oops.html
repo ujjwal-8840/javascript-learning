@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background: linear-gradient( to right, rgb(156, 46, 156),rgb(170, 87, 87) ,black);">
+    <script>
+        // INHERITANCE OOPS CONCEPT//
+class Car {
+    constructor (name){
+        this.parentName =name
+       
+    }
+}
+class Kia extends Car {
+   constructor (parentName,childName){
+super(parentName)
+this.childName=childName
+console.log(`${this.parentName} ${this.childName}`)
+   }
+   
+}
+const car = new Kia("kia","caren")
+car.name
+
+class Model extends Kia{
+    constructor(parentName,childName,model){
+        super(parentName,childName);
+        this.model = model
+        console.log(`${this.parentName} ${this.childName} ${this.model}`)
+    }
+}
+const model = new Model("kia", "caren","6.5.2")
+model.name
+
+// ENCAPSULATION //
+class Details {
+    name;
+    age;
+    constructor (name,age){
+        this.name = name;
+        this.age = age
+    }
+    get(){
+        return this.name;
+    }
+    set(newName){
+        this.newName=newName
+        if(this.newName.length >0){
+            this.name === this.newName
+        }else{
+            console.log("name is doesn't exist")
+        }
+        return newName
+    }
+    get(){
+        return this.age
+    }
+    set(newAge){
+        this.newAge = newAge
+        if(this.newAge.length>=0){
+            this.newAge === this.age
+        }else{
+            console.log("Age can't be i negative")
+        
+    }
+return newAge
+}
+}
+const p = new Details("ujjwal",21)
+console.log(p.name,p.age)
+p.name = "uprant"
+p.age = 22
+console.log(p.name,p.age)
+
+
+
+const n = new Details("ujjwal",21)
+console.log(n.name,n.age)
+p.newName = "uprant"
+p.newAge = 22
+console.log(p.newName,p.newAge)
+
+// POLYMORPHISM//
+
+class Vehicle{
+use(){
+    console.log("vehicle move")
+}
+}
+class Sar extends Vehicle
+{
+    use(){
+        console.log("The car is driven by user")
+       
+    }
+   
+}    
+class Boat extends Vehicle {
+    use(){
+        console.log("The boat is sails on water")
+    }
+}
+class Bike extends Vehicle{
+    use(){
+        console.log("The bike is cool vehicle")
+    }
+}
+
+const d = new Sar();
+const b = new Boat();
+const c = new Bike();
+
+d.use();
+b.use();
+c.use()
+
+//ABSTRACTION//
+
+</script>
+
+
+    
+</body>
+</html>

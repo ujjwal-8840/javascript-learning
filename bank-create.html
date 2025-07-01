@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>account create</title>
+
+   <style>
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      width: 320px;
+      text-align: center;
+       background: linear-gradient(to right, #74ebd5, #acb6e5);
+    }
+
+    h1 {
+      margin-bottom: 24px;
+      color: #333;
+    }
+
+    .transaction-form input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .transaction-form .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .transaction-form .btn:hover {
+      background-color: #45a049;
+    }
+    
+    
+    </style>
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Customer account</h1>
+        
+       <div class="transaction-form">
+    <input type="text" placeholder="Holder name" id="holder-name">
+    
+    <br>
+    <input type="text" placeholder="passowrd" id="acc-password">
+    <br>
+    <button type="submit" class="btn" onclick="createAccount()"> create</button>
+    
+</body>
+<script>
+
+
+    function createAccount(){
+        let holder= document.getElementById("holder-name")
+       
+         let password = document.getElementById("acc-password")
+       
+        if(!holder.value||!password.value){
+          alert("please fill all fields")
+          return;
+        }
+        
+        let data = {
+     holderName: holder.value,
+     password: password.value,
+   totalBalance :0
+        }
+         localStorage.setItem("balance",JSON.stringify(data))
+        
+        
+        
+         window.location.href = "tracker.html"
+         holder.value = ""
+         password.value = ""
+      
+    }
+</script>
+</html>

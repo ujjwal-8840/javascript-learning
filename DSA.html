@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>DSA</title>
+   <script src="DSA.js"></script>
+    
+   
+
+
+</head>
+<body>
+   <script>
+//    let row = 5
+//     let pattern =""
+//    for(let i= 1;i<=row;i++){
+   
+//    // for(x=1; x<=row-i;x++){
+//    //  pattern ="&nbsp;&nbsp;"
+//    // }
+//    for(j=1; j<=i; j++){
+//     pattern += "*"
+  
+//    }
+//    pattern += "<br>"
+//   document.write(pattern)
+//    }
+
+let size = 11;
+let face =""
+for(let i =0; i<size; i++){
+for(let j=0;j<size; j++){
+   if(
+   (i===0 && j>=4 && j<=6)||
+   (i===1 &&(j===3||j===7))||
+   (i===2 &&(j===2|| j===8))||
+   (i>=3 && i<=7 &&(j===1||j===9))||
+   (i===8 && (j===2||j===8))||
+   (i===9 && (j===3||j===7))||
+   (i===10 && (j>=4 && j<=6))
+   ){
+   face+="*"
+}else if((i===4 && j===3)||(i===4 && j===7)){
+   face+="0"
+}else if(i===5 && j===5){
+   face+="^"
+}else if(i===7&&j>=4&&j<=6){
+   if(j===4||j===6){
+      face+=")"
+   }else{
+      face +="_"
+   }
+}else{
+   face+="&nbsp;&nbsp;"
+}
+}
+face+="<br>"
+}
+    document.write(face)
+
+  
+   </script>
+</body>
+</html>

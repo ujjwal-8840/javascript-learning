@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Currency Converter</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #111827;
+  color: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.converter-container {
+  background: #1f2937;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  width: 320px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #93c5fd;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  color: #cbd5e1;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #374151;
+  color: white;
+  font-size: 1rem;
+}
+
+.dropdowns {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+.result {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #a5f3fc;
+}
+
+  </style>
+</head>
+<body>
+  <div class="converter-container">
+    <h2>Currency Converter</h2>
+    
+    <div class="input-group">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" placeholder="Enter amount" />
+    </div>
+
+    <div class="dropdowns">
+      <div class="input-group">
+        <label for="from">From</label>
+        <select id="from">
+          <option value="USD">USD</option>
+          <option value="INR">INR</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="to">To</label>
+        <select id="to">
+          <option value="INR">INR</option>
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="convert-btn">Convert</button>
+
+    
+  </div>
+
+ 
+  
+</body>
+</html>

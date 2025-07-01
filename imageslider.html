@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Slider</title>
+  <link rel="stylesheet" href="https://www.pexels.com/">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      background: linear-gradient(red,purple);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .slider {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 400%;
+    }
+
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .slide img {
+      width: 30%;
+      display: block;
+    }
+
+    .navigation {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .nav-btn {
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .nav-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider">
+  <div class="slides" id="slideContainer">
+    <div class="slide"><img src="https://picsum.photos/id/1018/800/400" alt="Slide 1"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1015/800/400" alt="Slide 2"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1016/800/400" alt="Slide 3"></div>
+    <div class="slide"><img src="https://picsum.photos/id/1025/800/400" alt="Slide 4"></div>
+    
+  </div>
+  <div class="navigation">
+    <button class="nav-btn" onclick="prevSlide()">&#10094;</button>
+    <button class="nav-btn" onclick="nextSlide()">&#10095;</button>
+  </div>
+</div>
+
+
+<script>
+let index = 0;
+const slide = document.getElementById("slideContainer")
+const totalSlide = slide.children.length
+function display(i){
+  index=(i+totalSlide)%totalSlide
+  slide.style.transform = `translateX(-${index * 100}%)`; 
+}
+function prevSlide(){
+  display(index-1)
+ 
+}
+
+
+   function nextSlide(){ 
+   display(index+1)
+}
+setInterval(nextSlide, 2000)
+
+</script>
+</body>
+</html>

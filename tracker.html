@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Balance Tracker</title>
+   <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+     background: linear-gradient(to right, rgb(182, 109, 109), rgb(49, 132, 209));
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right,rgb(182, 109, 109), rgb(49, 132, 209));
+
+}
+
+.balance {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.transaction-form input, .transaction-form button {
+    margin: 10px;
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    background: #e0e0e0;
+    margin: 5px;
+    border-radius: 5px;
+}
+button {
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color:black;
+    color: white;
+}
+button:hover{
+    background-color: green;
+}
+
+.btn-1{
+ padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+   background-color: black;
+    color: white;
+}
+.btn-1:hover{
+  background-color: red;
+}
+
+
+
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bank Balance Tracker</h1>
+        <div class="balance">Current Balance: ₹<span id="balance"></span></div>
+        
+       <div class="transaction-form">
+    <input type="text" placeholder="Transaction Name" id="transaction-name">
+    <br>
+      <input type="text" placeholder="passowrd" id="password">
+    <br>
+    <input type="number" placeholder="Amount" id="amount">
+    <br>
+    <button onclick="processDeposit('deposit')">Deposit</button>
+    <button class="btn-1" onclick="processWithdraw('withdraw')">Withdraw</button>
+       </div>
+        <h2>Transaction History</h2>
+        <ul id="transaction-list"></ul>
+    </div>
+</body>
+<script>
+//  Function to deposite fund//
+ let balance = localStorage.getItem("balance")
+ balance = JSON.parse(balance)
+ console.log(balance)
+ 
+
+    
+ function processDeposit()
+ {
+  let name= document.getElementById("transaction-name")
+  console.log(name.value)
+
+let amount= parseFloat(document.getElementById("amount").value)
+ console.log(amount)
+ let password = document.getElementById("password")
+console.log(password.value)
+ let balance = (JSON.parse(localStorage.getItem("balance")))
+console.log(balance)
+ 
+ if(!balance||!name.value||isNaN(amount)||amount <=0){
+    alert("no account found")
+    return
+ }
+if(name.value!==balance.holderName){
+    alert("name mismatch")
+    return;`        `
+}
+if(password.value !==balance.password){
+    alert("incorrect password")
+    return;
+}
+ balance.totalBalance +=amount
+ localStorage.setItem("balance",JSON.stringify(balance))
+ 
+ let transaction = (JSON.parse(localStorage.getItem("transaction")))||[]
+ console.log(transaction)
+ transaction.push({
+    type:"deposit",
+    amount:amount,
+    data:new Date().toLocaleString()
+ })
+ localStorage.setItem("transaction",JSON.stringify(transaction))
+ alert(`${amount}: new balance : ${balance.totalBalance}`)
+
+document.getElementById("transaction-name").value = ""
+document.getElementById("amount").value =""
+}
+
+  function processWithdraw(){
+  let name = document.getElementById("transaction-name")
+  console.log(name.value)
+  let amount = parseFloat(document.getElementById("amount").value)
+  console.log(amount)
+  let password = document.getElementById("password")
+console.log(password.value)
+let balance = (JSON.parse(localStorage.getItem("balance")))
+if(!balance||!name.value||isNaN(amount)||amount <=0){
+    alert("account not found")
+    return
+}
+if(name.value!== balance.holderName){
+    alert("name mismatch")
+    return
+}
+if(password.value !== balance.password){
+    alert("password incorrect")
+}
+if(balance.totalBalance< amount){
+    alert ("insufficient balance")
+    return
+}
+balance.totalBalance -= amount
+localStorage.setItem("balance",JSON.stringify(balance))
+let transaction = (JSON.parse(localStorage.getItem("transaction")))||[]
+transaction.push({
+    type: "withdraw",
+    amount: amount,
+    data : new Date().toLocaleString()
+})
+localStorage.setItem("transaction",JSON.stringify(transaction))
+alert(`${amount}: new balance: ${balance.totalBalance}`)
+
+document.getElementById("transaction-name").value = ""
+document.getElementById("amount").value =""
+document.getElementById("password").value = ""
+
+  }
+
+</script>
+</html>

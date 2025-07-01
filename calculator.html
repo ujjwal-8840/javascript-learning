@@ -1,0 +1,142 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA </title>
+
+   
+      <style>
+        
+       
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+.calculator {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.display {
+  width: 100%;
+  height: 50px;
+  background: #333;
+  color: white;
+  font-size: 1.5em;
+  text-align: right;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  border: none;
+}
+
+button {
+  width: 22%;
+  height: 60px;
+  margin: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #444;
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #666;
+}
+
+.clear {
+  background: #e74c3c;
+}
+
+.result {
+  background: #2ecc71;
+}
+
+.plus, .minus, .multiply, .divide, .percent {
+  background: #f39c12;
+}
+
+      </style>
+     <script>
+   
+function press( value){
+ let display =  document.querySelector(".display").value += value
+}
+
+
+function clearDisplay(){
+document.querySelector(".display").value= ""
+}
+function calculate(){
+  try{
+  let result= eval( document.querySelector(".display").value)
+ document.querySelector(".display").value =result
+}catch (error){
+document.querySelector(".display").value ="error"
+}
+
+}
+function cut(){
+ display =document.querySelector(".display")
+display.value = display.value.slice(0,-1)
+return display
+}
+
+function percent(){
+display = documnet.querySelector(".display")
+display.value =(display.value* display.value/100)
+
+}
+
+</script>
+</head>
+
+ <body>
+
+      <div class="calculator">
+<input type ="text" placeholder="enter value" class="display" disabled>
+
+         <button class="clear" onclick="clearDisplay()">c</button>
+         <button class="zero" onclick="press('0')">0</button>
+         <button class="result" onclick="calculate('=')">=</button>
+         <button class="plus" onclick="press('+')">+</button>
+        <br>
+        <button class="seven" onclick="press('7')">7</button>
+        <button class="eight" onclick="press('8')">8</button>
+        <button class="nine" onclick="press('9')">9</button>
+        <button class="minus" onclick="press('-')">-</button>
+<br>
+        <button class="four" onclick="press('4')">4</button>
+        <button class="five" onclick="press('5')">5</button>
+        <button class="six" onclick="press('6')">6</button>
+        <button class="multiply" onclick="press('*')">*</button>
+        <br>
+        <button class="one" onclick="press('1')">1</button>
+        <button class="two" onclick="press('2')">2</button>
+        <button class="three" onclick="press('3')">3</button>
+        <button class="divide" onclick="press('/')">/</button>
+        <br>
+       <button class="point" onclick="press('.')">.</button>
+       <button class="cut" onclick="cut('x')">x</button>
+       <button class="percent" onclick="percent('%')">%</button>
+      </div>
+    
+      
+ </body>
+ </html> 
+ 
+

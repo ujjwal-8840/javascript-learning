@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .btn{
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 20px;
+        background-color: rgb(145, 60, 46);
+    }
+    .btn:hover{
+        background-color: black;
+        color:white;
+    }
+</style>
+<body>
+    
+    <p id="para"></p>
+    <button class="btn">get joke</button>
+<script>
+   
+//     const URL= "https://official-joke-api.appspot.com/random_joke"
+//     const joke = document.getElementById("para")
+//     const button = document.querySelector(".btn")
+//     const randomJoke = async()=>{
+//         console.log("joke is ready");
+//         let response = await fetch(URL);
+//         console.log(response);
+//         let data =  await response.json()
+//         para.innerHTML = (`${data.setup} - ${data.punchline}`)
+
+//     }
+// button.addEventListener('click',randomJoke)
+
+ const URL= "https://sv443.net/jokeapi/v2/joke/Programming"
+    const joke = document.getElementById("para")
+    const button = document.querySelector(".btn")
+    const randomJoke = async()=>{
+        console.log("joke is ready");
+            let response = await fetch(URL);
+        console.log(response);
+        let data =  await response.json()
+        para.innerHTML = (`${data.setup} - ${data.delivery}`
+        )}
+        button.addEventListener('click',randomJoke)
+
+
+        //Simulate an API call using setTimeout() and a promise. Log Data received after 3 seconds.
+
+        
+const API = "https://jsonplaceholder.typicode.com/todos/1"
+function promise(){
+    let promsie = new Promise((resolve,reject)=>{
+        setTimeout(() => {
+             fetch(API)
+        },3000);
+    }).then((response)=>{
+        return response.json()
+    }).then((data)=>{
+        resolve("it is api")
+    }).catch((error)=>{
+        raject("something went wrong")
+    })
+    promsie
+    .then((data)=> console.log(data))
+    .catch((error)=> console.log("error caught",error))
+}
+     promise().then(()=>console.log("data is ready" ,data))
+    .catc(()=>console.log("error caught", error))
+    
+
+
+</script>
+</body>
+</html>
